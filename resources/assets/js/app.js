@@ -15,8 +15,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('invoice-create', require('./components/create.vue'));
+Vue.component('settings-index', require('./components/settings/index.vue'));
 
-const app = new Vue({
-    el: '#app'
-});
+import store from './store';
+new Vue({
+    store
+}).$mount('#app');

@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +14,14 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::group(['prefix'=>'api'],function(){
+    Route::get('invoiceref','InvoiceController@invoiceref');
+    Route::get('invoiceinfo','InvoiceController@invoiceinfo');
+    Route::resource('invoices','InvoiceController');
+    Route::resource('settings','SettingsController');
+
+    // Route::get('pdf')
 });
