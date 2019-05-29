@@ -18,7 +18,6 @@ Route::get('/', function () {
 
 
 Route::group(['prefix'=>'api'],function(){
-    Route::put('edem','TestController@edem');
     Route::get('print','InvoiceController@print');
     Route::get('print/{ref}','InvoiceController@printOne');
     Route::get('invoiceref','InvoiceController@invoiceref');
