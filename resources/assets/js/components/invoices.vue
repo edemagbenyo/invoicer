@@ -59,7 +59,7 @@ export default {
     },
     methods:{
         printInvoice(ref){
-            window.open(CONFIG.API_URL+'/print/'+ref+"/print","_blank")
+            window.open(CONFIG.API_URL+'/print/'+ref,"_blank")
         }
     },
     updated(){

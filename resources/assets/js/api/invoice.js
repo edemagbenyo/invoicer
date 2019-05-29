@@ -30,7 +30,7 @@ export default {
     updateSettingsInfo(data){
         console.log("Data we sent...",data);
         return axios.put(APP_CONFIG.API_URL + '/settings/1',{
-            data
+            invoice_info:data
         });
     },
 

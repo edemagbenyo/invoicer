@@ -79,7 +79,7 @@ class SettingsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $details =json_encode($request->data);
+        $details =json_encode($request->invoice_info);
         $settings = Setting::updateOrCreate(['id'=>1],['details'=>$details]);;
         return response()->json($settings);
     }
