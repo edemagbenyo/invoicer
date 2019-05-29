@@ -25,4 +25,5 @@ Route::group(['prefix'=>'api'],function(){
     Route::resource('settings','SettingsController');
 
     Route::get('print','InvoiceController@print');
+    Route::get('print/{ref}','InvoiceController@printOne');
 });

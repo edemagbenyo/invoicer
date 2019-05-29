@@ -5,6 +5,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+        <link href="{{asset('css/datatables.min.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css"/>
 
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -52,7 +53,7 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                
-                <a href="{{url('api/print')}}" class="btn btn-success">Print</a>
+                <a href="{{url('api/print')}}" class="btn btn-success">Print Latest Invoice</a>
             </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -65,5 +66,6 @@
 </div>
 
 <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/datatables.min.js')}}"></script>
 </body>
 </html>

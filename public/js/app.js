@@ -66596,6 +66596,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -66608,13 +66614,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.$store.getters.getInvoices;
         }
     },
-    methods: {},
+    methods: {
+        printInvoice: function printInvoice(ref) {
+            location.replace(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].API_URL + '/print/' + ref);
+        }
+    },
     updated: function updated() {
-        // $(document).ready( function () {
-        //     $('#invoices').DataTable({
-        //         select: true,
-        //     });
-        // } );
+        $(document).ready(function () {
+            $('#invoices').DataTable({
+                select: true
+            });
+        });
     }
 });
 
@@ -66645,12 +66655,20 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(item.client))]),
                   _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.subtotal))]),
+                  _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(item.total))]),
                   _vm._v(" "),
                   _c("td", [
                     _c(
                       "a",
-                      { attrs: { href: _vm.CONFIG.API_URL + "/print" } },
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.printInvoice(item.invoiceref)
+                          }
+                        }
+                      },
                       [
                         _c("span", {
                           staticClass: "glyphicon glyphicon-print"
@@ -66685,20 +66703,34 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("thead", [
-      _c("td", [
-        _vm._v("\n                        Date\n                    ")
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _vm._v("\n                        Client\n                    ")
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _vm._v("\n                        Total\n                    ")
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _vm._v("\n                        Options\n                    ")
+      _c("tr", [
+        _c("th", [
+          _vm._v("\n                            Date\n                        ")
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                            Client\n                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                            Subtotal(Ghc)\n                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                            Total(Ghc)\n                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                            Options\n                        "
+          )
+        ])
       ])
     ])
   }

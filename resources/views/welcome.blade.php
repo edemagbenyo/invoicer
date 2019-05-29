@@ -9,17 +9,11 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="{{asset('css/bootstrap.nofont.css')}}" rel="stylesheet" type="text/css"/>
 
         <!-- Styles -->
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+            
 
             .full-height {
                 height: 100vh;
@@ -49,15 +43,7 @@
                 font-size: 44px;
             }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+            
 
             .m-b-md {
                 margin-bottom: 30px;
@@ -81,12 +67,10 @@
                 <div class="title m-b-md">
                     {{config('app.name')}}
                 </div>
-                <div class="subtitle">
-                    Invoicing System
-                </div>
+              
 
                 <div class="links">
-                    <a href="{{route('invoices.create')}}">Enter</a>
+                    <a class="btn btn-lg btn-danger" href="{{route('invoices.create')}}">Issue invoice</a>
                 </div>
             </div>
         </div>

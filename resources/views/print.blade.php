@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
        
-        <link href="https://raw.githubusercontent.com/leolux/bootstrap-css-without-fonts/master/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('css/bootstrap.nofont.css')}}" rel="stylesheet" type="text/css"/>
 
     <style>
         .vat-summary{
@@ -83,8 +83,8 @@
                         <table class="table table-bordered vat-summary">
                             <tr>
                                 <td>VAT Rate %</td>
-                                <td>Total Net</td>
-                                <td>VAT</td>
+                                <td>Total Net(Ghc)</td>
+                                <td>VAT(Ghc)</td>
                             </tr>
                             <tr>
                                 <td>{{$settings->vat}}</td>
@@ -99,15 +99,15 @@
                     <td width="50%">
                         <table class="table table-bordered summary">
                             <tr>
-                                <td>Subtotal</td>
+                                <td>Subtotal(Ghc)</td>
                                 <td>{{$invoicedetails->subtotal}}</td>
                             </tr>
                             <tr>
-                                <td>VAT</td>
+                                <td>VAT(Ghc)</td>
                                 <td>{{$invoicedetails->vattotal}}</td>
                             </tr>
                             <tr>
-                                <td>Total</td>
+                                <td>Total(Ghc)</td>
                                 <td>{{$invoicedetails->total}}</td>
                             </tr>
                         </table>

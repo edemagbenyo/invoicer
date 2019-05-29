@@ -7,6 +7,7 @@ use App\Invoice;
 use App\Setting;
 use PDF;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class InvoiceController extends Controller
 {
@@ -37,7 +38,15 @@ class InvoiceController extends Controller
     public function index()
     {
         //
-        return response()->json([]);
+        $invoices = Invoice::all();
+        $multiplied = $invoices->map(function ($item, $key) {
+             $item->date = (new Carbon($item->date))->toFormattedDateString();
+             $item->client = $item->client;
+             $item->subtotal = json_decode($item->invoicedetails)->subtotal;
+             $item->total = json_decode($item->invoicedetails)->total;
+             return $item;
+        });
+        return response()->json($multiplied);
     }
 
     /**
@@ -120,6 +129,16 @@ class InvoiceController extends Controller
     public function print()
     {
         $latest_invoice = Invoice::latest()->first();
+        $pdf = PDF::loadView('print',[
+                                        'invoice'=>$latest_invoice,
+                                        'invoicedetails'=>json_decode($latest_invoice->invoicedetails),
+                                        'settings'=>json_decode(Setting::first()->details)
+                                        ]);
+        return $pdf->stream('invoice.pdf');
+    }
+    public function printOne($ref)
+    {
+        $latest_invoice = Invoice::where(['invoiceref'=>$ref])->first();
         $pdf = PDF::loadView('print',[
                                         'invoice'=>$latest_invoice,
                                         'invoicedetails'=>json_decode($latest_invoice->invoicedetails),

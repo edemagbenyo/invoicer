@@ -7,27 +7,33 @@
            <div class="panel-body">
                 <table class="table table-bordered" id="invoices">
                     <thead>
-                        <td>
-                            Date
-                        </td>
-                        <td>
-                            Client
-                        </td>
-                        <td>
-                            Total
-                        </td>
-                        <td>
-                            Options
-                        </td>
+                        <tr>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Client
+                            </th>
+                            <th>
+                                Subtotal(Ghc)
+                            </th>
+                            <th>
+                                Total(Ghc)
+                            </th>
+                            <th>
+                                Options
+                            </th>
+                        </tr>
                     </thead>
 
                     <tbody>
                         <tr v-for="(item,index) of invoices" :key="index">
                             <td>{{item.date}}</td>
                             <td>{{item.client}}</td>
+                            <td>{{item.subtotal}}</td>
                             <td>{{item.total}}</td>
                             <td>
-                                <a  :href="CONFIG.API_URL+'/print'">
+                                <a @click="printInvoice(item.invoiceref)">
                                     <span class="glyphicon glyphicon-print"></span>
                                     Print
                                 </a>
@@ -52,13 +58,16 @@ export default {
         }
     },
     methods:{
+        printInvoice(ref){
+            location.replace(CONFIG.API_URL+'/print/'+ref)
+        }
     },
     updated(){
-        // $(document).ready( function () {
-        //     $('#invoices').DataTable({
-        //         select: true,
-        //     });
-        // } );
+        $(document).ready( function () {
+            $('#invoices').DataTable({
+                select: true,
+            });
+        } );
     }
     
 }
