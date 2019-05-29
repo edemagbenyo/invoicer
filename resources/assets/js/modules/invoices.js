@@ -24,22 +24,23 @@ export const invoices = {
             })
             .catch(err=>{
                 commit('setSaveInvoiceStatus',3);
-
             });
         },
+
         updateSettings({commit},data){
             commit('setSaveSettingsStatus',1);
             invoiceAPI.updateSettingsInfo(data)
             .then(response=>{
                 console.log("updated settings information...", response.data);
                 commit('setSaveSettingsStatus',2);
-                
             })
             .catch(err=>{
                 commit('setSaveSettingsStatus',3);
 
             });
         },
+
+
         loadInvoiceRef({commit}){
             invoiceAPI.getInvoiceRef()
             .then(response=>{

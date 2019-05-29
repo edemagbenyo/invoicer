@@ -84,7 +84,8 @@
         methods:{
             updateSettings(){
                 if(this.validateFields()){
-                   let result = this.$store.dispatch('updateSettings',this.settings);
+                    console.log("Settings", this.settings);
+                   return this.$store.dispatch('updateSettings',this.settings);
                 }
             },
             validateFields(){

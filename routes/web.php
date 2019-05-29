@@ -18,12 +18,14 @@ Route::get('/', function () {
 
 
 Route::group(['prefix'=>'api'],function(){
+    Route::put('edem','TestController@edem');
+    Route::get('print','InvoiceController@print');
+    Route::get('print/{ref}','InvoiceController@printOne');
     Route::get('invoiceref','InvoiceController@invoiceref');
-    Route::get('invoiceinfo','InvoiceController@invoiceinfo');
+
     Route::resource('invoices','InvoiceController');
     Route::get('list','InvoiceController@list')->name('list');
     Route::resource('settings','SettingsController');
 
-    Route::get('print','InvoiceController@print');
-    Route::get('print/{ref}','InvoiceController@printOne');
+
 });

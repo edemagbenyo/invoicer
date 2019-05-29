@@ -30,7 +30,9 @@ export default {
     updateSettingsInfo(data){
         console.log("Data we sent...",data);
         return axios.put(APP_CONFIG.API_URL + '/settings/1',{
-            invoice_info:data
+            
+             ...data
+            
         });
     },
 
@@ -43,5 +45,13 @@ export default {
             data
         }
         );
+    }
+
+    ,
+    edem:function(da){
+        console.log(da);
+        return axios.put(APP_CONFIG.API_URL + '/edem',{
+            invoice_info:da
+        })
     }
 }

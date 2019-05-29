@@ -5,24 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Setting;
 
-class SettingsController extends Controller
+class TestController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function edem(Request $request)
     {
         //
-        $setting = Setting::first();
-        if($setting){
-            $details = json_decode($setting->details);
-            return response()->json($details);
-        }
-        return response()->json([]);
-        
-        
+        // $details =json_encode($request->invoice_info);
+        // $settings = Setting::updateOrCreate(['id'=>1],['details'=>$details]);;
+        return response()->json($request->all());
     }
 
     /**
@@ -82,10 +77,7 @@ class SettingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $details =json_encode($request->all());
-        $settings = Setting::updateOrCreate(['id'=>1],['details'=>$details]);;
-        return response()->json($request->all());
+        
     }
 
     /**
