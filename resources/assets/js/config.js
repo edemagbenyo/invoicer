@@ -7,7 +7,7 @@ switch (process.env.NODE_ENV) {
         api_url='http://invoice.test/api'
         break;
     case 'production':
-        api_url='http://invoice.edemagbenyo.com'
+        api_url='http://invoice.edemagbenyo.com/api'
         break
 
     default:
