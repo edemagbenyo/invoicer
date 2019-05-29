@@ -11,27 +11,27 @@ export default {
    },
 
     /*
-        GET     /api/invoiceinfo
+        GET     /api/settings
     */
     getSettings:function(){
         return axios.get(APP_CONFIG.API_URL + '/settings');
     },
 
     /*
-        PUT     /api/settings
+        GET     /api/invoices
+    */
+    getInvoices:function(){
+        return axios.get(APP_CONFIG.API_URL + '/invoices');
+    },
+
+    /*
+        PUT     /api/settings/id
     */
     updateSettingsInfo(data){
         console.log("Data we sent...",data);
         return axios.put(APP_CONFIG.API_URL + '/settings/1',{
             data
         });
-    },
-
-   /*
-    GET   /api/cafes/{cafeID}
-    */
-    getCafe: function( cafeID ){
-        return axios.get( APP_CONFIG.API_URL + '/cafes/' + cafeID );
     },
 
     /*

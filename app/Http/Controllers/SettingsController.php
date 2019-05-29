@@ -16,8 +16,12 @@ class SettingsController extends Controller
     {
         //
         $setting = Setting::first();
-        $details = json_decode($setting->details);
-        return response()->json($details);
+        if($setting){
+            $details = json_decode($setting->details);
+            return response()->json($details);
+        }
+        return response()->json([]);
+        
         
     }
 

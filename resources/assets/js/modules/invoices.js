@@ -57,14 +57,28 @@ export const invoices = {
                 commit('setLoadSettingsStatus',3)
 
             })
+        },
+        loadInvoices({commit}){
+            commit('setLoadInvoicesStatus',1)
+            invoiceAPI.getInvoices()
+            .then(response=>{
+                console.log("Result of invoices",response.data);
+                commit('setInvoices',response.data);
+                commit('setLoadInvoicesStatus',2);
+            })
+            .catch(err=>{
+                commit('setLoadInvoicesStatus',3)
+
+            })
         }
+
     },
     mutations:{
         setSaveInvoiceStatus(state, status){
             state.saveInvoiceStatus = status
         },
-        setInvoice(state, data){
-            state.invoice = data
+        setInvoices(state, data){
+            state.invoices = data
         },
         setInvoiceRef(state,data){
             state.invoiceRef = data
@@ -75,11 +89,17 @@ export const invoices = {
         setLoadSettingsStatus(state, status){
             state.loadSettingsStatus= status
         },
+        setLoadInvoicesStatus(state, status){
+            state.loadInvoicesStatus= status
+        },
         setSaveSettingsStatus(state, status){
             state.saveSettingsStatus= status
         },
     },
     getters:{
+        getInvoices(state){
+            return state.invoices
+        },
         setSaveInvoiceStatus(state){
             return state.saveInvoiceStatus;
         },
@@ -91,6 +111,9 @@ export const invoices = {
         },
         getLoadSettingsStatus(state){
             return state.loadSettingsStatus;
+        },
+        getLoadInvoicesStatus(state){
+            return state.loadInvoicesStatus;
         },
         getSaveSettingsStatus(state){
             return state.saveSettingsStatus;

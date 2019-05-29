@@ -98,7 +98,7 @@ export default {
   computed:{
       subtotal(){
         return this.lines.reduce((acc, val)=>{
-                    return Number(acc + val.nettotal)
+                    return Number(acc) + Number(val.nettotal)
                 },0);
       },
       vattotal(){

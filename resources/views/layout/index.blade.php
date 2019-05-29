@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="{{Request::segment(2)=='invoices' && Request::segment(3)=='create' ? 'active' : ''}}"><a href="{{route('invoices.create')}}">Issue <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Invoices</a></li>
+                <li class="{{Request::segment(2)=='list' ? 'active' : ''}}"><a href="{{route('list')}}">Invoices</a></li>
                 <li class="{{Request::segment(2)=='settings' ? 'active' : ''}}"><a href="{{route('settings.create')}}">Settings</a></li>
                 <li class="dropdown">
                 
@@ -51,10 +51,8 @@
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-            <form class="navbar-form navbar-left">
                
-                <button type="submit" class="btn btn-success">Print</button>
-            </form>
+                <a href="{{url('api/print')}}" class="btn btn-success">Print</a>
             </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

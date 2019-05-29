@@ -31,7 +31,7 @@
                             <div v-show="saveStatus==2" class="alert alert-success" role="alert">Invoice saved!</div> 
                             <a @click="reload" v-show="saveStatus==2"  class="btn btn-warning">New Invoice</a>
                             <button type="submit" v-show="saveStatus!==2"  @click.prevent="saveInvoice" class="btn btn-default">Issue Invoice</button>
-                            <button v-show="saveStatus==2" @click.prevent="print" class="btn btn-success">Print Invoice</button>
+                            <button v-show="saveStatus==2" @click.prevent="print" class="btn btn-success"> <span class="glyphicon glyphicon-print"></span> Print Invoice</button>
                        </form>
                     </div>
                 </div>
@@ -100,7 +100,7 @@ import config from '../config';
                 location.reload()
             },
             print(){
-                location.replace(config.API_URL+'print')
+                window.open(config.API_URL+"/print","_blank")
             }
         },
         components: {

@@ -21,7 +21,8 @@ Route::group(['prefix'=>'api'],function(){
     Route::get('invoiceref','InvoiceController@invoiceref');
     Route::get('invoiceinfo','InvoiceController@invoiceinfo');
     Route::resource('invoices','InvoiceController');
+    Route::get('list','InvoiceController@list')->name('list');
     Route::resource('settings','SettingsController');
 
-    // Route::get('pdf')
+    Route::get('print','InvoiceController@print');
 });

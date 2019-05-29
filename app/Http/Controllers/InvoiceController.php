@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Invoice;
 use App\Setting;
+use PDF;
+use Illuminate\Support\Facades\Storage;
 
 class InvoiceController extends Controller
 {
@@ -12,6 +14,7 @@ class InvoiceController extends Controller
 
     public function invoiceref()
     {
+        //Get the latest invoice and add one to it
         return response()->json(['invoiceref'=>1234567]);
     }
 
@@ -20,9 +23,21 @@ class InvoiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function list()
+    {
+        //
+        return view('invoices');
+    }
+
+    /**
+     * Get the list of all invoices
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         //
+        return response()->json([]);
     }
 
     /**
@@ -100,5 +115,16 @@ class InvoiceController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function print()
+    {
+        $latest_invoice = Invoice::latest()->first();
+        $pdf = PDF::loadView('print',[
+                                        'invoice'=>$latest_invoice,
+                                        'invoicedetails'=>json_decode($latest_invoice->invoicedetails),
+                                        'settings'=>json_decode(Setting::first()->details)
+                                        ]);
+        return $pdf->stream('invoice.pdf');
     }
 }

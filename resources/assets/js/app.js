@@ -17,6 +17,7 @@ window.Vue = require('vue');
 
 Vue.component('invoice-create', require('./components/create.vue'));
 Vue.component('settings-index', require('./components/settings/index.vue'));
+Vue.component('invoice-list', require('./components/invoices.vue'));
 
 import store from './store';
 new Vue({
