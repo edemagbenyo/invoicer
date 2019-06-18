@@ -32,7 +32,7 @@
     <div id="app">
         <div class="container">
             <div class="row">
-                <header style="background:url('{{asset('storage/intro_img.png')}}'); padding:15px; text-align:center; color:#FFFFFF">
+                <header style="background:url('{{asset('/intro_img.png')}}'); padding:15px; text-align:center; color:#FFFFFF">
                     <h1>{{config('app.name')}}</h1>
                 </header>
             </div>
