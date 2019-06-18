@@ -24,7 +24,16 @@ Route::group(['prefix'=>'api'],function(){
 
     Route::resource('invoices','InvoiceController');
     Route::get('list','InvoiceController@list')->name('list');
+    Route::get('reports/list','ReportController@list')->name('reports.list');
+    Route::get('surveys/list','SurveyController@list')->name('surveys.list');
+    Route::get('certificates/list','CertificateController@list')->name('certificates.list');
+    Route::get('reports/print/{reportid}','ReportController@printOne');
+    Route::get('certificates/print/{certificateid}','CertificateController@printOne');
+    Route::get('surveys/print/{surveyid}','SurveyController@printOne');
     Route::resource('settings','SettingsController');
+    Route::resource('surveys','SurveyController');
+    Route::resource('reports','ReportController');
+    Route::resource('certificates','CertificateController');
 
 
 });

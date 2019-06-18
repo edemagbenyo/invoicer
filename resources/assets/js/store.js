@@ -17,8 +17,14 @@ Vue.use( Vuex )
 */
 
 import {invoices} from './modules/invoices';
+import {certificates} from './modules/certificates';
+import {surveys} from './modules/surveys';
+import {reports} from './modules/reports';
 export default new Vuex.Store({
     modules: {
      invoices,
+     certificates,
+    //  surveys,
+     reports
     }
   })

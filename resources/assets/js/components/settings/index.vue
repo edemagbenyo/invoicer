@@ -18,6 +18,26 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6">
+                                    <label for="">Telephone</label>
+                                    <input type="text" class="form-control" v-model="settings.telephone">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="">Alternative Telephone</label>
+                                    <input type="text" class="form-control" v-model="settings.telephone2">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="">Email</label>
+                                    <input type="email" class="form-control" v-model="settings.email">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="">Website</label>
+                                    <input type="text" class="form-control" v-model="settings.website">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
                                     <label for="">Our Details</label>
                                     <textarea class="form-control" cols="30" rows="3" v-model="settings.details"></textarea>
                                 </div>

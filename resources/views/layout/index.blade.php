@@ -38,8 +38,16 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="{{Request::segment(2)=='invoices' && Request::segment(3)=='create' ? 'active' : ''}}"><a href="{{route('invoices.create')}}">Issue <span class="sr-only">(current)</span></a></li>
-                <li class="{{Request::segment(2)=='list' ? 'active' : ''}}"><a href="{{route('list')}}">Invoices</a></li>
+                <li class="dropdown {{Request::segment(2)=='invoices' || Request::segment(2)=='list' ? 'active' : ''}}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Invoices <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{route('invoices.create')}}">Issue Invoice</a></li>
+                    <li><a href="{{route('list')}}">Invoices List</a></li>
+                </ul>
+                </li>
+                <li class="{{Request::segment(2)=='reports' ? 'active' : ''}}"><a href="{{route('reports.index')}}">Reports</a></li>
+                <li class="{{Request::segment(2)=='surveys' ? 'active' : ''}}"><a href="{{route('surveys.index')}}">Surveys</a></li>
+                <li class="{{Request::segment(2)=='certificates' ? 'active' : ''}}"><a href="{{route('certificates.index')}}">Certificate</a></li>
                 <li class="{{Request::segment(2)=='settings' ? 'active' : ''}}"><a href="{{route('settings.create')}}">Settings</a></li>
                 <li class="dropdown">
                 
